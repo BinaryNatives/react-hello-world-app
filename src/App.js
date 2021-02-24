@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header'
+import Button from './components/Button'
+import React, {useState} from 'react'
 
 function App() {
+
+  // const buttonClicked = true
+
+  const [buttonClicked, setToggleState] = useState(false)
+
+  const changeText = () => {
+
+    setToggleState(buttonClicked == true ? false : true)
+
+    console.log('Im Clicked');
+  }
+
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello World!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header title={"Hello World React App."} />
+
+      <h1>Hello {buttonClicked ? "Button" : "World"}!</h1>
+
+      <h3>Click the below-button to change above-text </h3>
+
+      <Button cls='my-btn' text='Click Me' clickevnt={changeText} />
     </div>
   );
 }
